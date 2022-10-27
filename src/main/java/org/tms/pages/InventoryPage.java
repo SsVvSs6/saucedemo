@@ -8,7 +8,15 @@ public class InventoryPage extends BasePage {
     @FindBy(xpath = "//span[@class='title']")
     private WebElement nameOfMainPageSection;
 
+    @FindBy(xpath = "//a[@class='shopping_cart_link']")
+    private WebElement cardButton;
+
     public String getNameOfMainPageSectionText() {
         return nameOfMainPageSection.getText();
+    }
+
+    public CardPage clickCardButton() {
+        cardButton.click();
+        return new CardPage();
     }
 }
