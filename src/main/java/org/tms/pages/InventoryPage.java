@@ -19,4 +19,9 @@ public class InventoryPage extends BasePage {
         cardButton.click();
         return new CardPage();
     }
+
+    public InventoryPage waitPageIsLoaded() {
+        waitVisibilityOf(nameOfMainPageSection);
+        return this;
+    }
 }

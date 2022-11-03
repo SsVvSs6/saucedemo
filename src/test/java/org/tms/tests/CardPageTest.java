@@ -18,6 +18,7 @@ public class CardPageTest extends BaseTest {
         cardPage = new CardPage();
         User user = new User();
         loginPageService.login(user).clickCardButton();
+        cardPage.waitPageIsLoaded();
     }
 
     @Test

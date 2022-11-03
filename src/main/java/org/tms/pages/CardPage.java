@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class CardPage extends BasePage {
 
-    private static final String cardItemXPath = "//a[@id='%s']//div[@class='%s']";
-    private static final String cardItemXPatWithAncestor =
+    private static final String CARD_ITEM_XPATH = "//a[@id='%s']//div[@class='%s']";
+    private static final String CARD_ITEM_XPATH_WITH_ANCESTOR =
             "//a[@id='%s']/ancestor::div[@class='cart_item']//div[@class='%s']";
     private static final String REMOVE_BUTTON_XPATH = "//a[@id='%s']/ancestor::div[@class='cart_item']//button";
     private WebElement cartItemRemoveButton;
@@ -19,21 +19,21 @@ public class CardPage extends BasePage {
     private WebElement checkoutButton;
 
     public CardPage findCartItemName(String itemTitleLink) {
-        driver.findElement(By.xpath(String.format(cardItemXPath, itemTitleLink, "inventory_item_name")));
+        driver.findElement(By.xpath(String.format(CARD_ITEM_XPATH, itemTitleLink, "inventory_item_name")));
         return this;
     }
 
     public CardPage findCartItemQuantity(String itemTitleLink) {
-        driver.findElement(By.xpath(String.format(cardItemXPatWithAncestor, itemTitleLink, "cart_quantity")));
+        driver.findElement(By.xpath(String.format(CARD_ITEM_XPATH_WITH_ANCESTOR, itemTitleLink, "cart_quantity")));
         return this;
     }
 
     public CardPage findCartItemDescription(String itemTitleLink) {
-        driver.findElement(By.xpath(String.format(cardItemXPatWithAncestor, itemTitleLink, "inventory_item_desc")));
+        driver.findElement(By.xpath(String.format(CARD_ITEM_XPATH_WITH_ANCESTOR, itemTitleLink, "inventory_item_desc")));
         return this;
     }
     public CardPage findCartItemPrice(String itemTitleLink) {
-        driver.findElement(By.xpath(String.format(cardItemXPatWithAncestor, itemTitleLink, "inventory_item_price")));
+        driver.findElement(By.xpath(String.format(CARD_ITEM_XPATH_WITH_ANCESTOR, itemTitleLink, "inventory_item_price")));
         return this;
     }
 
@@ -45,6 +45,11 @@ public class CardPage extends BasePage {
     public InventoryPage clickContinueShoppingButton() {
         continueShoppingButton.click();
         return new InventoryPage();
+    }
+
+    public CardPage waitPageIsLoaded() {
+        waitVisibilityOf(continueShoppingButton);
+        return new CardPage();
     }
 
     public void clickCheckoutButton() {
