@@ -12,6 +12,7 @@ public class LoginPageService {
 
     public InventoryPage login(User user) {
         loginPage.openPage(LOGIN_PAGE_URL)
+                .waitPageIsLoaded()
                 .fillInUsername(user.getLogin())
                 .fillInPassword(user.getPassword())
                 .clickLoginButton();

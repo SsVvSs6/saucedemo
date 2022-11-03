@@ -17,13 +17,15 @@ public class CardPageTest extends BaseTest {
         loginPageService = new LoginPageService();
         cardPage = new CardPage();
         User user = new User();
-        loginPageService.login(user).clickCardButton();
+        loginPageService.login(user).
+                clickCardButton();
         cardPage.waitPageIsLoaded();
     }
 
     @Test
     public void verifyReturnToInventoryPageTest() {
-        String actualTextOfInventoryPage = cardPage.clickContinueShoppingButton().getNameOfMainPageSectionText();
+        String actualTextOfInventoryPage = cardPage.clickContinueShoppingButton().
+                getNameOfMainPageSectionText();
         String expectedTextOfInventoryPage = "PRODUCTS";
         Assert.assertEquals(actualTextOfInventoryPage, expectedTextOfInventoryPage,
                 "The actual text of the page does not match expected!");

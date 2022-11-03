@@ -34,4 +34,9 @@ public class LoginPage extends BasePage {
     public void clickLoginButton() {
         loginButton.click();
     }
+
+    public LoginPage waitPageIsLoaded() {
+        waitVisibilityOf(loginButton);
+        return this;
+    }
 }
