@@ -49,7 +49,7 @@ public class CardPage extends BasePage {
 
     public CardPage waitPageIsLoaded() {
         waitVisibilityOf(continueShoppingButton);
-        return new CardPage();
+        return this;
     }
 
     public void clickCheckoutButton() {

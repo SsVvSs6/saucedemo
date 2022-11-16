@@ -15,7 +15,7 @@ public class LoginPageTest extends BaseTest {
         loginPageService = new LoginPageService();
     }
 
-    @Test
+    @Test(description = "Log In Test")
     public void verifyLoginTest() {
         User user = new User();
         String actualTextOfInventoryPage = loginPageService.login(user)

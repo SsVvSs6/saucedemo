@@ -31,8 +31,9 @@ public class LoginPage extends BasePage {
         return  this;
     }
 
-    public void clickLoginButton() {
+    public InventoryPage clickLoginButton() {
         loginButton.click();
+        return new InventoryPage();
     }
 
     public LoginPage waitPageIsLoaded() {
