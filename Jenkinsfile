@@ -6,6 +6,11 @@ pipeline {
         maven "maven"
     }
 
+    parameters{
+        choice(choices: ['chrome', 'firefox'], name: 'browser')
+        choice(choices: ['src/test/resources/testng-smoke.xml'], name: 'surefire')
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -13,7 +18,7 @@ pipeline {
                 git 'https://github.com/SsVvSs6/saucedemo.git'
 
                 // Run Maven on a Unix agent.
-                sh "mvn -Dmaven.test.failure.ignore=true -Dbrowser=chrome -Dsurefire.suiteXmlFiles=src/test/resources/testng-smoke.xml clean test"
+                sh "mvn -Dmaven.test.failure.ignore=true -Dbrowser=${browser} -Dsurefire.suiteXmlFiles=${surefire} clean test"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
