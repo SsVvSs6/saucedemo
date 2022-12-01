@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Listener implements ITestListener {
 
+    private static final String TAKE_SCREENSHOT_PROCESS_NAME = "Take screenshot";
+
     @Override
     public void onTestStart(ITestResult result) {
         System.out.println(String.format("========== STARTING TEST %s ==========", result.getName()));
@@ -63,6 +65,7 @@ public class Listener implements ITestListener {
 
     @Attachment(value = "Last screen state", type = "image/png")
     private byte[] takeScreenshot() {
+        MessageLogger.logStartProcessInfo(TAKE_SCREENSHOT_PROCESS_NAME);
         return ((TakesScreenshot) DriverSingleton.getDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }
